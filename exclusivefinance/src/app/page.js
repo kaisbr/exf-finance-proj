@@ -30,6 +30,7 @@ export default function LoginPage() {
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           required
+          placeholder="Digite seu email"  
         style={{ marginBottom: '10px', padding: '8px', fontSize: '16px' , color: 'black'}}
         />
         
@@ -40,6 +41,7 @@ export default function LoginPage() {
           value={password} 
           onChange={(e) => setPassword(e.target.value)} 
           required
+          placeholder="Digite sua senha"  
           style={{ marginBottom: '20px', padding: '8px', fontSize: '16px', color: 'black' }}
         />
         
