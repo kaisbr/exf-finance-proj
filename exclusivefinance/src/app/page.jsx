@@ -27,7 +27,7 @@ export default function LoginPage() {
 `}</style>
 
 
-      /* Conteúdo da página */
+      [/* Conteúdo da página */]
       <div className="relative flex justify-center items-center h-screen">
         <form 
           onSubmit={handleSubmit} 
