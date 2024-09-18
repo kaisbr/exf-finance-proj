@@ -63,11 +63,11 @@ export default function LoginPage() {
       {/* Seção de login e bem-vindo por cima da onda */}
       <div className="relative flex justify-center items-center h-full w-full max-w-5xl space-x-10 z-10">
         {/* Lateral "Bem-vindo" */}
-        <div className="bg-[#313056] text-white flex flex-col justify-center items-center p-10 rounded-lg w-[300px] h-[400px] shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">Bem-vindo</h2>
-          <p className="text-lg mb-8">Novo por aqui?</p>
+        <div className="bg-white bg-opacity-20 backdrop-blur-md text-white flex flex-col justify-center items-center p-10 rounded-lg w-[300px] h-[500px] shadow-lg">
+          <h2 className="text-2xl font-bold mb-4 text-[#313056]">Bem-vindo</h2>
+          <p className="text-lg mb-8 text-[#313056]" >Novo por aqui?</p>
           <button 
-            onClick={() => router.push('/signup')}
+            onClick={() => router.push('/Registro')}
             className="bg-white text-[#313056] p-3 rounded-lg font-semibold hover:bg-gray-200 transition"
           >
             Criar conta
@@ -86,7 +86,7 @@ export default function LoginPage() {
         {/* Formulário de login */}
         <form 
           onSubmit={handleSubmit} 
-          className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg shadow-md w-[400px] h-[450px]"
+          className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg shadow-md w-[400px] h-[500px]"
         >
           <h2 className="text-2xl font-bold mb-4 text-center text-[#313056]">Faça Login</h2>
 
@@ -112,15 +112,39 @@ export default function LoginPage() {
           />
            <small className="text-blue-900">A senha deve ter pelo menos 6 caracteres.</small>
 
+           <div className="flex items-center mb-4">
+           <div className="flex items-center justify-between mb-4">
+  <div className="flex items-center">
+    <input
+      type="checkbox"
+      id="remember"
+      className="form-checkbox h-3 w-3 text-blue-600"
+    />
+    <label htmlFor="remember" className="ml-2 text-gray-700 text-sm">
+      Lembrar
+    </label>
+  </div>
+  <button
+    type="button"
+    className="text-blue-600 underline ml-40 hover:text-blue-800 focus:outline-none"
+  >
+    Esqueci a senha
+  </button>
+</div>
+
+
+</div>
+
           <button 
             type="submit" 
-            className="w-full bg-[#313056] text-white p-2 mt-5 rounded hover:bg-blue-600 transition duration-200"
+            className="w-full bg-[#313056] text-white p-2 rounded hover:bg-blue-600 transition duration-200"
           >
             Entrar
           </button>
 
           <button 
   type="button" 
+  onClick={() => router.push('/Google')}
   className="flex items-center justify-center w-full bg-white mt-5 text-[#313056] border border-gray-300 p-2 rounded hover:bg-gray-100 transition duration-200"
 >
 
