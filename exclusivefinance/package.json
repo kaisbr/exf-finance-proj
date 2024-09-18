@@ -11,10 +11,13 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.11"
+    "next": "14.2.11",
+    "@heroicons/react": "^2.x.x"
   },
   "devDependencies": {
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
+    
   }
+
 }
