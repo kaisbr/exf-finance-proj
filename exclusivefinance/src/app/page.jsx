@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
-
+//não sei como funcionou mas deu certo
 const PasswordInput = ({ password, setPassword, showPassword, setShowPassword }) => {
   return (
     <div className="relative mb-6">
@@ -47,6 +47,8 @@ export default function LoginPage() {
 
   return (
     <div className="relative min-h-screen bg-white h-full">
+
+      {/* onda improvisada que deu certo obrigado GPT */}
       <svg className="absolute bottom-0 left-0 w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <defs>
           <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -59,10 +61,10 @@ export default function LoginPage() {
       </svg>
 
       <div className="relative flex justify-center items-center h-screen">
-        <form 
-          onSubmit={handleSubmit} 
-          className="bg-white bg-opacity-60 p-6 rounded-lg shadow-md w-full max-w-md z-10"
-        >
+      <form 
+       onSubmit={handleSubmit} 
+        className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg shadow-md w-full max-w-md z-10"
+      >
           <h2 className="text-2xl font-bold mb-4 text-center text-black">Login</h2>
 
           <div className="mb-4">
