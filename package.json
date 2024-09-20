@@ -4,6 +4,7 @@
     "@types/react-dom": "^18.3.0"
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.5"
+    "@heroicons/react": "^2.1.5",
+    "bootstrap": "^5.3.3"
   }
 }
