@@ -80,7 +80,7 @@ export default function HomePage() {
     if (tipoSelecionado === "Entradas") {
       setTipo("Valor adicionado");
     } else {
-      setTipo("Débito");
+      setTipo("Gasto");
     }
   }
 
@@ -125,21 +125,21 @@ export default function HomePage() {
           </h1>
 
           <button
-            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-700 transition"
             onClick={() => router.push("/Orcamento")}
           >
             Orçamento
           </button>
 
           <button
-            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-700 transition"
             onClick={() => router.push("/Investimentos")}
           >
             Investimentos
           </button>
           <button
-            className="p-2 bg-red-400 text-white rounded hover:bg-red-600 transition"
-            onClick={() => console.log("/")}
+            className="p-2 bg-red-400 text-white rounded hover:bg-red-700 transition"
+            onClick={() => router.push("/")}
           >
             Sair
           </button>

@@ -15,7 +15,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      {/* Onda azul no fundo */}
+      {}
       <svg
         className="absolute bottom-0 left-0 w-full h-full z-0"
         viewBox="0 0 1440 320"
@@ -65,7 +65,7 @@ export default function HomePage() {
               onClick={handleBackClick}
               className="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition"
             >
-              Acesse o Login
+              Voltar ao Login
             </button>
 
             <button
