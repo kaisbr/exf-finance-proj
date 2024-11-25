@@ -1,7 +1,7 @@
 "use client";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function InvestmentPage() {
   const router = useRouter();
@@ -10,6 +10,19 @@ export default function InvestmentPage() {
   const [amount, setAmount] = useState("");
   const [growthRate, setGrowthRate] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
+
+  // Função para pedir permissão de notificações
+  useEffect(() => {
+    if (Notification.permission === "default") {
+      Notification.requestPermission();
+    }
+  }, []);
+
+  const sendNotification = (title, body) => {
+    if (Notification.permission === "granted") {
+      new Notification(title, { body });
+    }
+  };
 
   const handleAddOrEditInvestment = () => {
     if (investmentName && amount && growthRate) {
@@ -24,8 +37,16 @@ export default function InvestmentPage() {
         updatedInvestments[editingIndex] = updatedInvestment;
         setInvestments(updatedInvestments);
         setEditingIndex(null);
+        sendNotification(
+          "Investimento Atualizado",
+          `Você atualizou ${investmentName}.`
+        );
       } else {
         setInvestments([...investments, updatedInvestment]);
+        sendNotification(
+          "Novo Investimento",
+          `Você adicionou ${investmentName}.`
+        );
       }
 
       setInvestmentName("");
@@ -43,16 +64,38 @@ export default function InvestmentPage() {
   };
 
   const handleDeleteInvestment = (index) => {
+    const investmentToDelete = investments[index];
     setInvestments(investments.filter((_, i) => i !== index));
+    sendNotification(
+      "Investimento Excluído",
+      `${investmentToDelete.name} foi removido.`
+    );
   };
 
   const calculateGrowth = (amount, rate) => {
     return (amount * (1 + rate / 100)).toFixed(2);
   };
 
+  // Adiciona lembretes automáticos para vencimentos
+  const scheduleReminder = (investment, delayInMinutes) => {
+    const delayInMs = delayInMinutes * 60 * 1000;
+
+    setTimeout(() => {
+      sendNotification(
+        "Lembrete de Investimento",
+        `Lembre-se de verificar o progresso de ${investment.name}.`
+      );
+    }, delayInMs);
+  };
+
+  const handleScheduleReminder = (index) => {
+    const investment = investments[index];
+    scheduleReminder(investment, 1); // Lembrete em 1 minuto
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      {}
+      {/* Ondas de fundo */}
       <svg
         className="absolute bottom-0 left-0 w-full h-full z-0"
         viewBox="0 0 1440 320"
@@ -182,6 +225,12 @@ export default function InvestmentPage() {
                           className="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition"
                         >
                           Excluir
+                        </button>
+                        <button
+                          onClick={() => handleScheduleReminder(index)}
+                          className="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
+                        >
+                          Agendar Lembrete
                         </button>
                       </div>
                     </div>

@@ -123,17 +123,19 @@ export default function HomePage() {
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-6 sm:mb-1">
             Exclusive Finance
           </h1>
+
           <button
-            className="p-2 bg-blue-400 text-white rounded hover:bg-blue-600 transition"
+            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+            onClick={() => router.push("/Orcamento")}
+          >
+            Orçamento
+          </button>
+
+          <button
+            className="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
             onClick={() => router.push("/Investimentos")}
           >
             Investimentos
-            <button
-              className="p-2 bg-blue-400 text-white rounded hover:bg-blue-600 transition"
-              onClick={() => router.push("/Notificacoes")}
-            >
-              Notificações
-            </button>
           </button>
           <button
             className="p-2 bg-red-400 text-white rounded hover:bg-red-600 transition"
@@ -184,10 +186,11 @@ export default function HomePage() {
             <label className="text-gray-600">Tipo</label>
             <div className="flex flex-col sm:flex-row justify-between mt-2">
               <button
-                className={`flex-1 p-3 rounded transition-transform ${selectedButton === "Saídas"
+                className={`flex-1 p-3 rounded transition-transform ${
+                  selectedButton === "Saídas"
                     ? "bg-red-600 text-white scale-105"
                     : "bg-gray-200 text-gray-800"
-                  }`}
+                }`}
                 onClick={() => selecionarTipo("Saídas")}
               >
                 Saídas
@@ -307,10 +310,11 @@ sm:p-6 justify-between"
                       R$ {formatarValor(item.valor)}
                     </td>
                     <td
-                      className={`text-gray-700 px-4 py-4 bg-white ${item.tipo === "Valor adicionado"
+                      className={`text-gray-700 px-4 py-4 bg-white ${
+                        item.tipo === "Valor adicionado"
                           ? "text-green-800"
                           : "text-red-600"
-                        }`}
+                      }`}
                     >
                       {item.tipo}
                     </td>
