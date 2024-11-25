@@ -12,35 +12,11 @@ export default function BudgetPage() {
     { name: "Alimentação", budget: 0, spent: 0 },
     { name: "Transporte", budget: 0, spent: 0 },
     { name: "Lazer", budget: 0, spent: 0 },
-    { name: "Educação", budget: 0, spent: 0 },
+    { name: "Moradia", budget: 0, spent: 0 },
     { name: "Saúde", budget: 0, spent: 0 },
   ]);
 
   const [alerts, setAlerts] = useState([]);
-
-  const handleBackClick = () => {
-    router.push("/");
-  };
-
-  const handleMainPageClick = () => {
-    router.push("/Home");
-  };
-
-  const handleBudgetChange = (index, value) => {
-    if (value >= 0) {
-      const newCategories = [...categories];
-      newCategories[index].budget = Number(value);
-      setCategories(newCategories);
-    }
-  };
-
-  const handleSpentChange = (index, value) => {
-    if (value >= 0) {
-      const newCategories = [...categories];
-      newCategories[index].spent = Number(value);
-      setCategories(newCategories);
-    }
-  };
 
   useEffect(() => {
     const newAlerts = categories
@@ -59,6 +35,18 @@ export default function BudgetPage() {
     setAlerts(newAlerts);
   }, [categories]);
 
+  const handleBudgetChange = (index, value) => {
+    const newCategories = [...categories];
+    newCategories[index].budget = Math.max(Number(value) || 0, 0); // Evita valores negativos
+    setCategories(newCategories);
+  };
+
+  const handleSpentChange = (index, value) => {
+    const newCategories = [...categories];
+    newCategories[index].spent = Math.max(Number(value) || 0, 0); // Evita valores negativos
+    setCategories(newCategories);
+  };
+
   const chartData = {
     labels: categories.map((cat) => cat.name),
     datasets: [
@@ -76,8 +64,7 @@ export default function BudgetPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      {}
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <svg
         className="absolute bottom-0 left-0 w-full h-full z-0"
         viewBox="0 0 1440 320"
@@ -115,19 +102,24 @@ export default function BudgetPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-white bg-opacity-20 backdrop-blur-md text-white flex flex-col justify-center items-center p-10 rounded-lg w-[1100px] h-auto shadow-lg z-10">
-        <h1 className="text-5xl font-bold text-gray-800 mb-6">Orçamento</h1>
-
-        <p className="text-xl text-gray-600 mb-10">
+      <div className="bg-white bg-opacity-20 backdrop-blur-md text-white flex flex-col justify-center items-center p-6 sm:p-10 rounded-lg w-full max-w-4xl h-auto shadow-lg z-10">
+        <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
+          Orçamento
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10">
           Gerencie suas finanças e acompanhe seus gastos.
         </p>
 
-        {}
         <div className="w-full mb-6">
           {categories.map((category, index) => (
-            <div key={index} className="flex justify-between items-center mb-4">
-              <span className="text-lg text-gray-800">{category.name}</span>
-              <div className="flex items-center space-x-4">
+            <div
+              key={index}
+              className="flex flex-col sm:flex-row justify-between items-center mb-4"
+            >
+              <span className="text-lg text-gray-800 mb-2 sm:mb-0">
+                {category.name}
+              </span>
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
                 <div>
                   <label htmlFor={`budget-${index}`} className="text-gray-700">
                     Orçamento:
@@ -157,7 +149,6 @@ export default function BudgetPage() {
           ))}
         </div>
 
-        {}
         {alerts.length > 0 && (
           <div className="w-full bg-red-100 text-red-800 p-4 rounded-lg mb-6 shadow">
             {alerts.map((alert, index) => (
@@ -168,7 +159,6 @@ export default function BudgetPage() {
           </div>
         )}
 
-        {}
         <div className="w-full bg-white rounded-lg p-5 shadow-lg">
           <Bar
             data={chartData}
@@ -176,10 +166,9 @@ export default function BudgetPage() {
           />
         </div>
 
-        {}
-        <div className="mt-8 flex space-x-5">
+        <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-5">
           <button
-            onClick={() => router.push("Home")}
+            onClick={() => router.push("/Home")}
             className="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition"
           >
             Voltar para Página Inicial
@@ -187,7 +176,7 @@ export default function BudgetPage() {
         </div>
       </div>
 
-      <footer className="w-full h-24 flex items-center justify-center border-t z-10">
+      <footer className="w-full h-24 flex items-center justify-center border-t z-10 mt-6">
         <p className="text-gray-500">© 2024 EXF Exclusive Finance</p>
       </footer>
     </div>
