@@ -18,6 +18,7 @@ export default function BudgetPage() {
 
   const [alerts, setAlerts] = useState([]);
 
+  // Monitora mudanças no estado de categorias e atualiza alertas com base nos gastos e orçamentos.
   useEffect(() => {
     const newAlerts = categories
       .map((category) => {
@@ -35,18 +36,21 @@ export default function BudgetPage() {
     setAlerts(newAlerts);
   }, [categories]);
 
+  // Atualiza o orçamento de uma categoria específica, evitando valores negativos.
   const handleBudgetChange = (index, value) => {
     const newCategories = [...categories];
-    newCategories[index].budget = Math.max(Number(value) || 0, 0); // Evita valores negativos
+    newCategories[index].budget = Math.max(Number(value) || 0, 0);
     setCategories(newCategories);
   };
 
+  // Atualiza os gastos reais de uma categoria específica, evitando valores negativos.
   const handleSpentChange = (index, value) => {
     const newCategories = [...categories];
-    newCategories[index].spent = Math.max(Number(value) || 0, 0); // Evita valores negativos
+    newCategories[index].spent = Math.max(Number(value) || 0, 0);
     setCategories(newCategories);
   };
 
+  // Define os dados do gráfico de barras.
   const chartData = {
     labels: categories.map((cat) => cat.name),
     datasets: [
@@ -63,6 +67,7 @@ export default function BudgetPage() {
     ],
   };
 
+  // Renderiza o conteúdo da página.
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <svg
@@ -110,6 +115,7 @@ export default function BudgetPage() {
           Gerencie suas finanças e acompanhe seus gastos.
         </p>
 
+        {/* Campos de orçamento e gastos */}
         <div className="w-full mb-6">
           {categories.map((category, index) => (
             <div
@@ -159,6 +165,7 @@ export default function BudgetPage() {
           </div>
         )}
 
+        {/* Gráfico de barras */}
         <div className="w-full bg-white rounded-lg p-5 shadow-lg">
           <Bar
             data={chartData}

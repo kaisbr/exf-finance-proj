@@ -13,6 +13,7 @@ export default function HomePage() {
   const [selectedButton, setSelectedButton] = useState("");
   const MAX_DESCRICAO_LENGTH = 45;
 
+  // Calcula as entradas e saídas totais com base nas despesas.
   const summary = despesas.reduce(
     (acc, despesa) => {
       if (despesa.tipo === "Valor adicionado") {
@@ -30,6 +31,7 @@ export default function HomePage() {
 
   const total = summary.entradas - summary.saidas;
 
+  // Formata valores para o formato brasileiro (R$ X.XXX,XX).
   const formatarValor = (valor) => {
     return valor
       .toFixed(2)
@@ -39,6 +41,7 @@ export default function HomePage() {
 
   const router = useRouter();
 
+  // Função para adicionar um gasto à lista.
   function submitForm() {
     const data = new Date().toLocaleDateString();
     const newDespesa = {
@@ -86,6 +89,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100 relative">
+      {/* SVG com fundo de onda (visual decorativo). */}
       <svg
         className="absolute bottom-0 left-0 w-full h-full z-0"
         viewBox="0 0 1440 320"
@@ -145,6 +149,7 @@ export default function HomePage() {
           </button>
         </div>
         <main className="w-full flex flex-col items-start justify-start text-left mt-6 sm:mt-12">
+          {/* Modal para adicionar novo gasto */}
           <Modal
             isOpen={isOpen}
             overlayClassName="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-gray-700 bg-opacity-80"

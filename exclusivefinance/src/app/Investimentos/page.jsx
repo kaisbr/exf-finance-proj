@@ -71,6 +71,7 @@ export default function InvestmentPage() {
     );
   };
 
+  // Calcula o valor após um ano com a taxa de crescimento.
   const calculateGrowth = (amount, rate) => {
     return (amount * (1 + rate / 100)).toFixed(2);
   };
@@ -86,6 +87,7 @@ export default function InvestmentPage() {
     }, delayInMs);
   };
 
+  // Agenda um lembrete para um investimento específico.
   const handleScheduleReminder = (index) => {
     const investment = investments[index];
     scheduleReminder(investment, 1);
@@ -136,6 +138,7 @@ export default function InvestmentPage() {
             Gerencie e acompanhe seus investimentos.
           </p>
 
+          {/* Campo de entrada para o nome do investimento, montante inicial e taxa de crescimento */}
           <div className="mt-5 w-full max-w-lg">
             <div className="flex flex-col space-y-4">
               <input
@@ -187,6 +190,7 @@ export default function InvestmentPage() {
             </div>
           </div>
 
+          {/* Info sobre cada investimento. */}
           <div className="mt-10 w-full max-w-2xl">
             <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
               Todos os investimentos
