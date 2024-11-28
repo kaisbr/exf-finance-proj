@@ -23,29 +23,28 @@ export default function GoogleLoginFake() {
           alt="Google logo"
           className="h-10 mx-auto mb-6"
         />
-        <h2 className="text-center text-xl font-semibold mb-6">Fazer login no Google</h2>
-        <form onSubmit={handleSubmit}>
+        <h2 className="text-center text-xl font-semibold mb-6 text-black">Entrar com o Google</h2>
+        <form onSubmit={handleSubmit}> 
           <div className="mb-4">
-            <input
-              type="email"
-              placeholder="Email ou telefone"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          
+          <input
+            type="email"
+            placeholder="Email ou telefone"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full p-2 border border-gray-300 rounded text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full p-2 border border-gray-300 rounded text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>          
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition duration-200"
@@ -54,7 +53,7 @@ export default function GoogleLoginFake() {
           </button>
           <div className="flex justify-between mt-4 text-sm text-gray-600">
             <a href="#" className="hover:underline">Esqueceu seu e-mail?</a>
-            <a href="#" className="hover:underline">Criar conta</a>
+            <a href="/Registrogoogle" className="hover:underline">Criar conta</a>
           </div>
         </form>
       </div>

@@ -6,11 +6,11 @@ export default function HomePage() {
   const router = useRouter();
 
   const handleBackClick = () => {
-    router.push("/");
+    router.push("/"); // Alterado para direcionar para a página de login
   };
 
   const handleMainPageClick = () => {
-    router.push("/Home");
+    router.push("/Home"); // Alterado para direcionar para a página home
   };
 
   return (
@@ -62,14 +62,14 @@ export default function HomePage() {
 
           <div className="mt-5 flex flex-col items-center space-y-5">
             <button
-              onClick={handleBackClick}
+              onClick={handleBackClick} 
               className="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition"
             >
               Voltar ao Login
             </button>
 
             <button
-              onClick={handleMainPageClick}
+              onClick={handleMainPageClick} 
               className="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition"
             >
               Continuar
