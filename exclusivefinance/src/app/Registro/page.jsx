@@ -4,17 +4,17 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Importando useRouter
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
-const PasswordInput = ({ id, password, setPassword, showPassword, setShowPassword }) => {
+const PasswordInput = ({ id, password, setPassword, showPassword, setShowPassword, label }) => {
   return (
     <div className="relative mb-6">
-      <label htmlFor={id} className="block text-gray-700 font-semibold mb-2">Senha</label>
+      <label htmlFor={id} className="block text-gray-700 font-semibold mb-2">{label}</label>
       <input
         type={showPassword ? 'text' : 'password'}
         id={id}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
-        placeholder={id === "password" ? "Crie sua senha" : "Confirme a sua senha"}
+        placeholder={id === "password" ? "Crie sua senha" : "Confirme sua senha"}
         className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
       />
       <button
@@ -113,6 +113,7 @@ export default function RegisterPage() {
           setPassword={setPassword}
           showPassword={showPassword}
           setShowPassword={setShowPassword}
+          label="Senha"
         />
 
         {/* Campo de Confirmação de Senha */}
@@ -122,6 +123,7 @@ export default function RegisterPage() {
           setPassword={setConfirmPassword}
           showPassword={showConfirmPassword}
           setShowPassword={setShowConfirmPassword}
+          label="Confirme sua senha"
         />
 
         {/* Exibição de erro */}
@@ -131,7 +133,6 @@ export default function RegisterPage() {
           type="submit" 
           className="w-full bg-[#313056] text-white p-2 rounded hover:bg-blue-600 transition duration-200"
         >
-        
           Criar Conta
         </button>
       </form>
